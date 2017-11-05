@@ -1,0 +1,42 @@
+%Se va genera un semnal cu rezolutie temporara de 2ms, 20ms
+%200ms pentru un semnal continuu de tipul:
+
+%1. Semnal dreptunghiular periodic cu
+% Perioada: 2 s.
+% Factor de umplere: 25%.
+% Nivel maxim: +0.5.
+% Nivel minim: -1.
+
+%rezolutie temporara de 2 ms
+t=0:0.002:10; %sunt afisate 5 perioade
+f=0.5; %f este frecventa semnalului
+faza=2*pi*f; % este faza semnalului
+duty=25; %duty este factorul de umplere
+a=0.25; % a este numar necesar pt functia semnalului
+b=0.75; % b este numar necesar pt functia semnalului
+fct=(b*square(faza*t,duty))-a; % fct e functia semnalului
+
+subplot(3,1,1) % afiseaza semnalele pe 3 linii si o coloana
+plot(t,fct),grid,xlabel('t [s]'),ylabel('A [V]')
+title('Semnal dreptunghiular 2ms')
+%afiseaza semnalul, apar gridurile, numele pt axe si numele tabelului
+
+%pentru urmatoarele variante toate comentariile nescrise sunt analog
+
+%rezolutie temporara de 20 ms
+t=0:0.02:10;%sunt afisate 5 perioade
+
+fct=(b*square(faza*t,duty))-a;
+subplot(3,1,2)
+plot(t,fct),grid,xlabel('t [s]'),ylabel('A [V]')
+title('Semnal dreptunghiular 20ms')
+
+%rezolutie temporara de 200 ms
+t=0:0.2:10;%sunt afisate 5 perioade
+
+fct=(b*square(faza*t,duty))-a;
+subplot(3,1,3)
+plot(t,fct),grid,xlabel('t [s]'),ylabel('A [V]')
+title('Semnal dreptunghiular 200ms')
+%se constata ca datorita rezolutiei temporare semnalul pare distorsionat
+
