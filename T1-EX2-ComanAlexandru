@@ -1,0 +1,56 @@
+%Se va genera un semnal cu rezolutie temporara de 2ms, 20ms
+%200ms pentru un semnal continuu de tipul:
+
+%2. Semnal triunghiular periodic
+% Perioad: 6 s.///
+% Nivel maxim: +1.
+% Nivel minim: -2.
+% Panta+ 1 V/s Observa?ie: Panta– [V/s] rezult? din calcule
+
+timpurc=0:0.002:3; % timpurc=timpul de "urcare", cu rezolutia temporala de 2ms
+s1=length(timpurc); % s1=lungimea vectorului timpurc
+xurc=linspace(-2,1,s1); %generam semnalul liniar, pe portiunea crescatoare, punct cu punct, folosindu-ne de distributia liniara intre cele 2 nivele cu linspace
+timpcob=3.01:0.002:5; % timpcob=timpul de "coborare"
+s2=length(timpcob); %la fel ca s1
+xcob=linspace(1,-2,s2);%procedam la fel pe portiunea decrescatoare
+t=[timpurc timpcob]; 
+x=[xurc xcob]; %unim "partile crescatoare si descrescatoare" ale semnalului dreptunhiular
+x=[x x]; %copiem semnalul x pentru a avea 2 perioade pe ecran 
+t=[t t+5 ]; %adaugam la timp inca 5 secunde pt urmatoarea perioada
+subplot(3,1,1)
+plot(t,x), grid, title('Semnal triunghiular periodic, 200ms')
+xlabel('t[s]');
+ylabel('A[V]');
+
+%pt rezoluatia de timp de 20ms si 200ms se copiaza codul si se modifica doar
+%pasul la timpurc si timpcob, restul explicatiilor raman la fel
+
+timpurc=0:0.02:3; % timpurc=timpul de "urcare", cu rezolutia temporala de 20ms
+s1=length(timpurc); % s1=lungimea vectorului timpurc
+xurc=linspace(-2,1,s1); %generam semnalul liniar, pe portiunea crescatoare, punct cu punct, folosindu-ne de distributia liniara intre cele 2 nivele cu linspace
+timpcob=3.01:0.02:5; % timpcob=timpul de "coborare"
+s2=length(timpcob); %la fel ca s1
+xcob=linspace(1,-2,s2);%procedam la fel pe portiunea decrescatoare
+t=[timpurc timpcob]; 
+x=[xurc xcob]; %unim "partile crescatoare si descrescatoare" ale semnalului dreptunhiular
+x=[x x]; %copiem semnalul x pentru a avea 2 perioade pe ecran 
+t=[t t+5 ]; %adaugam la timp inca 5 secunde pt urmatoarea perioada
+subplot(3,1,2)
+plot(t,x), grid, title('Semnal triunghiular periodic, 20ms')
+xlabel('t[s]');
+ylabel('A[V]');
+
+timpurc=0:0.2:3; % timpurc=timpul de "urcare", cu rezolutia temporala de 200ms
+s1=length(timpurc); % s1=lungimea vectorului timpurc
+xurc=linspace(-2,1,s1); %generam semnalul liniar, pe portiunea crescatoare, punct cu punct, folosindu-ne de distributia liniara intre cele 2 nivele cu linspace
+timpcob=3.01:0.2:5; % timpcob=timpul de "coborare"
+s2=length(timpcob); %la fel ca s1
+xcob=linspace(1,-2,s2);%procedam la fel pe portiunea decrescatoare
+t=[timpurc timpcob]; 
+x=[xurc xcob]; %unim "partile crescatoare si descrescatoare" ale semnalului dreptunhiular
+x=[x x]; %copiem semnalul x pentru a avea 2 perioade pe ecran 
+t=[t t+5 ]; %adaugam la timp inca 5 secunde pt urmatoarea perioada
+subplot(3,1,3)
+plot(t,x), grid, title('Semnal triunghiular periodic, 2ms')
+xlabel('t[s]');
+ylabel('A[V]');
